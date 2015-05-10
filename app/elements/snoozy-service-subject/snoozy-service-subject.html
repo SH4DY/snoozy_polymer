@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="snoozy-service-subject" attributes="subjects">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <core-ajax id="ajax"
+      auto
+      url="../../api/subjects.json"
+      on-core-response="{{subjectsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        created: function() {
+          this.subjects = [];
+        },
+        subjectsLoaded: function(event, response){
+          this.subjects = this.$.ajax.response.slice(0);
+          console.log("AJAX CALL " + response);
+        }
+      });
+    })();
+  </script>
+</polymer-element>

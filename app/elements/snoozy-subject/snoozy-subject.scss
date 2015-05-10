@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.card-header {
+  height: 75px;
+  width: 100%;
+}
+
+polyfill-next-selector { content: '.card-header img'; }
+.card-header ::content img {
+  width: 20%;
+  height: auto;
+}
+
+polyfill-next-selector { content: '.card-header h3'; }
+.card-header ::content h4 {
+  margin-left: 15px;
+  width: 60%;
+}

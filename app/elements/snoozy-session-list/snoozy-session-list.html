@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-list/core-list.html">
+
+<polymer-element name="snoozy-session-list" attributes="subjectId">
+  <template>
+    <link rel="stylesheet" href="snoozy-session-list.css" >
+
+    <h4> {{subjectId}}</h4>
+    <core-list data="{{data}}" flex>
+        <template>
+          <div class="row">
+            <div>{{model.name}}</div>
+          </div>
+        </template>
+    </core-list>
+  </template>
+
+  <script>
+    (function(){
+      Polymer({
+        publish: {
+          subjectId: {
+            value: 0,
+            reflect: true
+          }
+        },
+        created: function(){
+        //published properties which are arrays or objects
+        //should be initialized in the created callback
+
+
+          this.data = generateFakeSessions();
+
+          function generateFakeSessions(){
+            var data = [];
+            for(var i = 0; i < 1000; i++){
+              data.push({
+                name: faker.name.findName(),
+                date: faker.date.future()
+              });
+            }
+            return data;
+          }
+
+        }
+      });
+    })();
+
+  </script>
+</polymer-element>

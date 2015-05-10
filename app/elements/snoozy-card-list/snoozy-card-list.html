@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../snoozy-subject/snoozy-subject.html">
+<link rel="import" href="../snoozy-service-subject/snoozy-service-subject.html">
+
+<polymer-element name="snoozy-card-list" attributes="">
+
+  <template>
+    <link rel="stylesheet" href="snoozy-card-list.css">
+
+    <snoozy-service-subject id="service" subjects="{{subjects}}"></snoozy-service-subject>
+
+    <template repeat="{{subject in subjects}}">
+      <a href="{{urlFor('subject-info', {subjectId: subject.title})}}">
+        <snoozy-subject>
+          <h4>{{subject.title}}</h4>
+          <img src="http://cdn.flaticon.com/png/256/61514.png">
+        </snoozy-subject>
+      </a>
+    </template>
+
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        // define element prototype here
+        created: function () {
+        }
+      });
+    })();
+  </script>
+</polymer-element>
